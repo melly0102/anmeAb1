@@ -94,7 +94,7 @@ public class Ab1Tests {
 
 	@BeforeAll
 	public static void InitializeNFA11() {
-		n11 = test.fromPattern("a *b * c");
+		n11 = test.fromPattern("a *b *c");
 	}
 
 	@BeforeAll
@@ -271,7 +271,7 @@ public class Ab1Tests {
 		n = n5.concat(n6);
 		assertFalse(test.accepts(n, ""));
 		assertTrue(test.accepts(n, "a"));
-		assertTrue(test.accepts(n, "aa"));
+		assertFalse(test.accepts(n, "aa"));
 		assertTrue(test.accepts(n, "ab"));
 		assertFalse(test.accepts(n, "a b c"));
 
@@ -478,7 +478,7 @@ public class Ab1Tests {
 		assertTrue(Pattern.matches(regex, "abaccbababb"));
 
 		assertFalse(Pattern.matches(regex, "abababab"));
-		assertTrue(Pattern.matches(regex, "abacabcab"));
+		assertFalse(Pattern.matches(regex, "abacabbab"));
 		assertFalse(Pattern.matches(regex, "abacababbc"));
 
 		gesamtPunkte += 1;
@@ -507,11 +507,11 @@ public class Ab1Tests {
 
 		assertTrue(Pattern.matches(regex, "10101010101"));
 		assertTrue(Pattern.matches(regex, "1111111111"));
-		assertTrue(Pattern.matches(regex, "010101 010101 11111111010101010"));
+		assertTrue(Pattern.matches(regex, "01010101010111111111010101010"));
 
-		assertFalse(Pattern.matches(regex, "1 1 1 1 1 11 11 1 1 11 100"));
+		assertFalse(Pattern.matches(regex, "1111111111111100"));
 		assertFalse(Pattern.matches(regex, "00000000000"));
-		assertFalse(Pattern.matches(regex, "0 0 0 0 0110 010 0010 0100"));
+		assertFalse(Pattern.matches(regex, "01101000100100"));
 
 		gesamtPunkte += 1;
 	}
